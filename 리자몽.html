@@ -1,0 +1,181 @@
+<html>
+<head>
+    <title>리자몽히스토리</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+</head>
+<body>
+<textarea id="originList">
+Lv.62 란봉
+Lv.62 하이엔젤
+Lv.62 내맘대로한다
+Lv.62 TURBULENCE
+Lv.62 와운
+Lv.63 힘바
+Lv.63 봉자씨
+Lv.52 붕어즙
+Lv.65 카라멜마끼야
+Lv.63 Bomber
+Lv.63 LI엘
+Lv.62 서대문구보안관
+Lv.59 쪼종민
+Lv.60 반했어
+Lv.62 니람
+Lv.60 올퀴
+Lv.62 꽤액꽤액
+Lv.63 연수구송도동
+Lv.63 빨간머리샹크스
+Lv.64 레비나
+Lv.62 순OI
+Lv.61 아스피셔스
+Lv.63 실님
+Lv.62 대기돌파
+Lv.62 가나샘씨
+Lv.63 토우검
+Lv.62 용허
+Lv.62 류ol
+Lv.62 검은눈팬더
+Lv.62 레이네펠
+Lv.63 잎쌔
+Lv.63 로젠크로이츠올덴N
+Lv.62 풀잎
+Lv.63 닌자보법
+Lv.61 데쓰킹
+Lv.62 앙큼상큼
+Lv.63 타지
+Lv.64 토닥토닥
+Lv.62 헤네시진저엘
+Lv.62 UriD
+Lv.63 뀨군
+Lv.62 도른밤도깨비
+Lv.62 새Or
+Lv.63 지드가문
+Lv.62 꿈이나꾸자
+Lv.62 샨류
+Lv.62 리치베리
+Lv.62 아리베데르치
+Lv.63 귀차너걍댐져
+Lv.62 핡짥
+Lv.61 Benzzu
+Lv.61 액션
+Lv.61 므스므
+Lv.61 핸남
+Lv.62 장만월사장님
+Lv.61 하푸하푸
+Lv.62 켈르베르
+Lv.62 붕어
+Lv.61 쌈개
+Lv.62 미남오빠
+Lv.61 더벤
+Lv.62 기링달꽃
+Lv.62 포마Z
+Lv.61 까진애
+Lv.62 최강파워
+Lv.61 Vanzy
+Lv.62 적부
+Lv.61 꼬꼬마수비대
+Lv.62 손팅
+Lv.62 로드백
+Lv.62 박효신
+Lv.62 공릉동매콤주먹
+Lv.58 눈꾸
+Lv.62 라인제임
+</textarea>
+    
+    <textarea id="curList"></textarea>
+    
+    <div id="outlist"></div>
+    <div id="inlist"></div>
+    <button id="diff">비교</button>
+        <script>
+        var list;
+        var arr;
+        var regex;
+            
+        var curList;
+        var curArr;
+
+        (function(){
+            regex = /Lv.[0-9][0-9]/gi;
+            regex2 = /\s/g;
+            regex3 = /\r/g;
+            list = $('#originList').text().replace(regex,"")
+            //$('#originList').text(list);
+            arr = list.split('\n');
+            for( var i=0; i<arr.length; i++ ){ if(arr[i].trim().length > 0 ){ arr[i] = arr[i].trim() } else {  }   }
+            
+            arr.splice(arr.length-1,1);
+            
+        })()
+            
+        $(document).on('click','#diff',function(e){
+            
+            if($('#curList').val().trim() === ''){
+                alert("복붙 제대로 하고 눌러");
+                return;
+            }
+                        
+            var rst = [];
+            var rst2 = [];
+            var temp = [];
+            
+            $('#inlist').text('');
+            $('#outlist').text('');
+            
+            curList = $('#curList').val().replace(regex,"");
+            curArr = curList.split('\n');
+            
+            
+            for( var i=0; i<curArr.length; i++ ){ curArr[i] = curArr[i].trim() }
+
+                        
+            
+            var diffArr = arr;
+            var diffArrRev = arr;
+            
+            //curArr , arr 비교
+            for(var j=0; j<arr.length; j++){
+                var duple = true;
+                for(var k=0; k<curArr.length; k++){
+                    if(arr[j] === curArr[k]){
+                        duple = false;
+                    } else if(arr[j].trim() === '' || curArr[k].trim() === ''){
+                        duple = false;
+                    }
+                }
+                
+                if(duple){
+                    rst.push(arr[j]);
+                }
+            }
+            var a = null;
+            a = "나간사람";
+            a += "("+arr.length + '->' + curArr.length+") => ";
+            a += rst.toString()
+            $('#outlist').text(a)
+            
+            // 들어온사람
+            
+            //curArr , arr 비교
+            for(var j=0; j<curArr.length; j++){
+                var duple = true;
+                for(var k=0; k<arr.length; k++){
+                    if(curArr[j] === arr[k]){
+                        duple = false;
+                    } else if(curArr[j].trim() === '' || arr[k].trim() === ''){
+                        duple = false;
+                    }
+                }
+                
+                if(duple){
+                    rst2.push(curArr[j]);
+                }
+            }
+            var a2 = null;
+            a2 = "드러온사람->";
+            a2 += rst2.toString()
+            $('#inlist').text(a2);
+            
+        })
+    </script>
+</body>
+</html>
