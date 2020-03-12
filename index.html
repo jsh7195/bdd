@@ -1,12 +1,20 @@
 <!doctype html>
 <html>
 <head>
-    <title>리자몽히스토리</title>
+    <title>적대히스토리</title>
     <meta charset="utf-8">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 <body>
-<textarea id="originList">
+    <div style="display: flex">
+        <div style="flex: 1">
+            <span>date : 2/28(가문명변경전)</span>
+            <br/>
+            <span> ----------- </span>
+            <br/>
+            <span>74명</span>
+            <br/>
+            <textarea>
 Lv.62 란봉
 Lv.62 하이엔젤
 Lv.62 내맘대로한다
@@ -81,9 +89,91 @@ Lv.62 박효신
 Lv.62 공릉동매콤주먹
 Lv.58 눈꾸
 Lv.62 라인제임
-</textarea>
+            </textarea> 
+        </div>
+        <div style="flex: 1">
+            <span>date : 3/12(가문명변경후)</span>
+            <br/>
+            <span> ----------- </span>
+            <br/>
+            <span>64명</span>
+            <br/>
+            <textarea id="originList">
+Lv.62 란봉
+Lv.62 하이엔젤
+Lv.62 몬몬
+Lv.63 TURBULENCE
+Lv.63 힘바
+Lv.63 봉자씨
+Lv.65 카라멜
+Lv.63 Bomber
+Lv.63 LI엘
+Lv.62 서대문구보안관
+Lv.59 쪼종민
+Lv.60 반했어
+Lv.62 니람
+Lv.63 원인재역
+Lv.63 빨간머리샹크스
+Lv.64 레비나
+Lv.62 순OI
+Lv.61 아스피셔스
+Lv.63 실님
+Lv.62 대기돌파
+Lv.62 가나샘씨
+Lv.63 토우검
+Lv.62 용허
+Lv.62 류ol
+Lv.62 레이네펠
+Lv.63 잎쌔
+Lv.62 풀잎
+Lv.63 보법
+Lv.61 데쓰킹
+Lv.62 쓰담쓰담
+Lv.65 토닥토닥
+Lv.62 헤네시진저엘
+Lv.62 UriD
+Lv.63 뀨군
+Lv.62 도른
+Lv.62 새아
+Lv.63 지드가문
+Lv.62 샨류
+Lv.62 쨈쨈
+Lv.62 아리베데르치
+Lv.63 귀차너걍댐져
+Lv.61 Benzzu
+Lv.61 액션
+Lv.61 므스므
+Lv.62 장만월사장님
+Lv.61 하푸하푸
+Lv.62 붕어
+Lv.62 쌈개
+Lv.62 미남오빠
+Lv.61 쿠닌
+Lv.62 하마
+Lv.62 포마Z
+Lv.61 까진애
+Lv.62 최강파워
+Lv.61 Vanzy
+Lv.62 적부
+Lv.62 손팅
+Lv.62 로드백
+Lv.62 박효신
+Lv.62 공릉동매콤주먹
+Lv.58 비원
+Lv.62 라인제임
+Lv.60 깡리버
+Lv.62 신길
+            </textarea>
+        </div>
+        <div style="flex: 1">
+            <span><a href="https://www.kr.playblackdesert.com/Adventure/Guild/GuildProfile?guildName=%EB%A6%AC%EC%9E%90%EB%AA%BD">리자몽 길드원</a> 에서 목록 블록쳐서 복붙하셈</span>
+            <br/>
+            <span>가운데 "길드장" 한줄 삭제 해야함</span>
+            <br/>
+            <textarea id="curList"></textarea>
+        </div>
+    </div>
     
-    <textarea id="curList"></textarea>
     
     <div id="outlist"></div>
     <div id="inlist"></div>
@@ -174,7 +264,7 @@ Lv.62 라인제임
             }
             var a2 = null;
             a2 = "드러온사람->";
-            a2 += rst2.toString()
+            a2 += rst2.toString().split(",").join(" , ")
             $('#inlist').text(a2);
             
         })
